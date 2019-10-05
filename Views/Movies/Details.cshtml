@@ -1,0 +1,63 @@
+﻿
+
+@using Learn_Net_Core_ASP.Data;
+@using Learn_Net_Core_ASP.Models;
+@using Microsoft.EntityFrameworkCore;
+@addTagHelper *,Microsoft.AspNetCore.Mvc.TagHelpers
+@model Movie
+
+
+<h1>Details</h1>
+
+<div>
+    <h4>Movie</h4>
+    <hr />
+    <dl class="row">
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.title)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.title)
+        </dd>
+        <dt class="col-sm-2">
+            Rating
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.rating.FirstOrDefault().rating)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.releaseDate)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.releaseDate)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.releaseYear)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.releaseYear)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.blurb)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.blurb)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.language)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.language)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.genre)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.genre)
+        </dd>
+    </dl>
+</div>
+<div>
+    <a asp-action="Edit" asp-route-id="@Model.id">Edit</a> |
+    <a asp-action="Index">Back to List</a>
+</div>
