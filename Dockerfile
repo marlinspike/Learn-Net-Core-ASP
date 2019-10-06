@@ -1,18 +1,20 @@
-﻿FROM mcr.microsoft.com/dotnet/core/sdk:3.0 AS build
+FROM mcr.microsoft.com/dotnet/core/aspnet:3.0-buster-slim AS base
 WORKDIR /app
+EXPOSE 80
+EXPOSE 443
 
-# copy csproj and restore as distinct layers
-COPY *.sln .
-COPY aspnetapp/*.csproj ./aspnetapp/
-RUN dotnet restore
+FROM mcr.microsoft.com/dotnet/core/sdk:3.0-buster AS build
+WORKDIR /src
+COPY ["Learn-Net-Core-ASP.csproj", ""]
+RUN dotnet restore "./Learn-Net-Core-ASP.csproj"
+COPY . .
+WORKDIR "/src/."
+RUN dotnet build "Learn-Net-Core-ASP.csproj" -c Release -o /app/build
 
-# copy everything else and build app
-COPY aspnetapp/. ./aspnetapp/
-WORKDIR /app/aspnetapp
-RUN dotnet publish -c Release -o out
+FROM build AS publish
+RUN dotnet publish "Learn-Net-Core-ASP.csproj" -c Release -o /app/publish
 
-
-FROM mcr.microsoft.com/dotnet/core/aspnet:3.0 AS runtime
+FROM base AS final
 WORKDIR /app
-COPY --from=build /app/aspnetapp/out ./
+COPY --from=publish /app/publish .
 ENTRYPOINT ["dotnet", "Learn-Net-Core-ASP.dll"]
