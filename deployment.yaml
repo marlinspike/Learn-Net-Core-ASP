@@ -17,3 +17,14 @@ spec:
         image: rcregistry.azurecr.io/coreasp:v1
         ports:
         - containerPort: 80
+#---
+apiVersion: v1
+kind: Service
+metadata:
+  name: coreasp
+spec:
+  type: LoadBalancer
+  ports:
+  - port: 80
+  selector:
+    app: coreasp
