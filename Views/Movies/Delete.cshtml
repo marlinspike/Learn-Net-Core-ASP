@@ -1,9 +1,5 @@
-﻿@page
-@model Learn_Net_Core_ASP.Views.Movies.DeleteModel
-
-@{
-    ViewData["Title"] = "Delete";
-}
+﻿
+@model Movie
 
 <h1>Delete</h1>
 
@@ -13,46 +9,41 @@
     <hr />
     <dl class="row">
         <dt class="col-sm-2">
-            @Html.DisplayNameFor(model => model.Movie.title)
+            @Html.DisplayNameFor(model => model.title)
         </dt>
         <dd class="col-sm-10">
-            @Html.DisplayFor(model => model.Movie.title)
+            @Html.DisplayFor(model => model.title)
+
         </dd>
         <dt class="col-sm-2">
-            @Html.DisplayNameFor(model => model.Movie.releaseDate)
+            @Html.DisplayNameFor(model => model.releaseYear)
         </dt>
         <dd class="col-sm-10">
-            @Html.DisplayFor(model => model.Movie.releaseDate)
+            @Html.DisplayFor(model => model.releaseYear)
         </dd>
         <dt class="col-sm-2">
-            @Html.DisplayNameFor(model => model.Movie.releaseYear)
+            @Html.DisplayNameFor(model => model.blurb)
         </dt>
         <dd class="col-sm-10">
-            @Html.DisplayFor(model => model.Movie.releaseYear)
+            @Html.DisplayFor(model => model.releaseYear)
         </dd>
         <dt class="col-sm-2">
-            @Html.DisplayNameFor(model => model.Movie.blurb)
+            @Html.DisplayNameFor(model => model.language)
         </dt>
         <dd class="col-sm-10">
-            @Html.DisplayFor(model => model.Movie.blurb)
+            @Html.DisplayFor(model => model.language)
         </dd>
         <dt class="col-sm-2">
-            @Html.DisplayNameFor(model => model.Movie.language)
+            @Html.DisplayNameFor(model => model.genre)
         </dt>
         <dd class="col-sm-10">
-            @Html.DisplayFor(model => model.Movie.language)
-        </dd>
-        <dt class="col-sm-2">
-            @Html.DisplayNameFor(model => model.Movie.genre)
-        </dt>
-        <dd class="col-sm-10">
-            @Html.DisplayFor(model => model.Movie.genre)
+            @Html.DisplayFor(model => model.genre)
         </dd>
     </dl>
-    
+
     <form method="post">
-        <input type="hidden" asp-for="Movie.id" />
+        <input type="hidden" asp-for="id" />
         <input type="submit" value="Delete" class="btn btn-danger" /> |
-        <a asp-page="./Index">Back to List</a>
+        <a asp-action="Index">Back to List</a>
     </form>
 </div>

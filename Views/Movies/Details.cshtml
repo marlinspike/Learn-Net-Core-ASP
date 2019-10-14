@@ -1,9 +1,4 @@
 ﻿
-
-@using Learn_Net_Core_ASP.Data;
-@using Learn_Net_Core_ASP.Models;
-@using Microsoft.EntityFrameworkCore;
-@addTagHelper *,Microsoft.AspNetCore.Mvc.TagHelpers
 @model Movie
 
 
@@ -24,12 +19,6 @@
         </dt>
         <dd class="col-sm-10">
             @Html.DisplayFor(model => model.rating.FirstOrDefault().rating)
-        </dd>
-        <dt class="col-sm-2">
-            @Html.DisplayNameFor(model => model.releaseDate)
-        </dt>
-        <dd class="col-sm-10">
-            @Html.DisplayFor(model => model.releaseDate)
         </dd>
         <dt class="col-sm-2">
             @Html.DisplayNameFor(model => model.releaseYear)

@@ -36,15 +36,14 @@ namespace Learn_Net_Core_ASP.Controllers
         }
 
         // GET: Movies/Create
-        public ActionResult Create()
-        {
+        public ActionResult Create()  {
             return View();
         }
 
         // POST: Movies/Create
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<ActionResult> Create([Bind("title", "releaseDate", "releaseYear","blurb","language","genre")]Movie newMovie){
+        public async Task<ActionResult> Create([Bind("title", "releaseDate", "releaseYear","blurb","language","genre")]Movie newMovie) {
             try {
                 _context.Movies.Add(newMovie);
                 await _context.SaveChangesAsync();
@@ -58,19 +57,27 @@ namespace Learn_Net_Core_ASP.Controllers
         }
 
         // GET: Movies/Edit/5
-        public ActionResult Edit(int id)
-        {
-            return View();
+        [HttpGet]
+        public ActionResult Edit(int id) {
+            var movie = _context.Movies.Include(r => r.rating).Where(m => m.id == id).FirstOrDefaultAsync();
+            return View(movie.Result);
         }
 
         // POST: Movies/Edit/5
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit(int id, IFormCollection collection)
-        {
+        public async Task<IActionResult> Edit (int id, [Bind("id","title", "releaseDate", "releaseYear", "blurb", "language", "genre")]Movie edit)  {
             try
             {
-                // TODO: Add update logic here
+                var movie = _context.Movies.Include(r => r.rating).Where(m => m.id == id).FirstOrDefaultAsync().Result;
+                movie.title = edit.title;
+                movie.releaseYear = edit.releaseYear;
+                movie.releaseDate = edit.releaseDate;
+                movie.rating = edit.rating;
+                movie.language = edit.language;
+                movie.genre = edit.genre;
+                movie.blurb = edit.blurb;
+                await _context.SaveChangesAsync();
 
                 return RedirectToAction(nameof(Index));
             }
@@ -81,24 +88,23 @@ namespace Learn_Net_Core_ASP.Controllers
         }
 
         // GET: Movies/Delete/5
-        public ActionResult Delete(int id)
-        {
-            return View();
+        public ActionResult Delete(int id) {
+            var movie = _context.Movies.Include(r => r.rating).Where(m => m.id == id).FirstOrDefaultAsync();
+            return View(movie.Result);
         }
 
         // POST: Movies/Delete/5
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Delete(int id, IFormCollection collection)
-        {
-            try
-            {
-                // TODO: Add delete logic here
-
+        public async Task<IActionResult> Delete(int id, IFormCollection collection) {
+            try {
+                var movie = await _context.Movies.FindAsync(id);
+                _context.Movies.Remove(movie);
+                await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
+
             }
-            catch
-            {
+            catch {
                 return View();
             }
         }

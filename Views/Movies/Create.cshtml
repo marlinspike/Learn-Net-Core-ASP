@@ -1,7 +1,5 @@
 ﻿
-@using Learn_Net_Core_ASP.Models
 @model Movie
-@addTagHelper *,Microsoft.AspNetCore.Mvc.TagHelpers
 @{
     ViewData["Title"] = "Create";
 }
@@ -18,11 +16,6 @@
                 <label asp-for="title" class="control-label"></label>
                 <input asp-for="title" class="form-control" />
                 <span asp-validation-for="title" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="releaseDate" class="control-label"></label>
-                <input asp-for="releaseDate" class="form-control" />
-                <span asp-validation-for="releaseDate" class="text-danger"></span>
             </div>
             <div class="form-group">
                 <label asp-for="releaseYear" class="control-label"></label>

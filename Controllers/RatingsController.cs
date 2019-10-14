@@ -54,15 +54,15 @@ namespace Learn_Net_Core_ASP.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("id,rating,review,movie_id")] Rating rating)
+        public async Task<IActionResult> Create([Bind("id,rating,review,movie_id")] Rating movie_rating)
         {
             if (ModelState.IsValid)
             {
-                _context.Add(rating);
+                _context.Add(movie_rating);
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
             }
-            return View(rating);
+            return View(movie_rating);
         }
 
         // GET: Ratings/Edit/5
@@ -86,9 +86,9 @@ namespace Learn_Net_Core_ASP.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("id,rating,review,movie_id")] Rating rating)
+        public async Task<IActionResult> Edit(int id, [Bind("id,rating,review,movie_id")] Rating movie_rating)
         {
-            if (id != rating.id)
+            if (id != movie_rating.id)
             {
                 return NotFound();
             }
@@ -97,12 +97,12 @@ namespace Learn_Net_Core_ASP.Controllers
             {
                 try
                 {
-                    _context.Update(rating);
+                    _context.Update(movie_rating);
                     await _context.SaveChangesAsync();
                 }
                 catch (DbUpdateConcurrencyException)
                 {
-                    if (!RatingExists(rating.id))
+                    if (!RatingExists(movie_rating.id))
                     {
                         return NotFound();
                     }
@@ -113,7 +113,7 @@ namespace Learn_Net_Core_ASP.Controllers
                 }
                 return RedirectToAction(nameof(Index));
             }
-            return View(rating);
+            return View(movie_rating);
         }
 
         // GET: Ratings/Delete/5
