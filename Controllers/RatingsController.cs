@@ -54,6 +54,7 @@ namespace Learn_Net_Core_ASP.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
+<<<<<<< HEAD
         public async Task<IActionResult> Create([Bind("id,rating,review,movie_id")] Rating movie_rating)
         {
             if (ModelState.IsValid)
@@ -63,6 +64,17 @@ namespace Learn_Net_Core_ASP.Controllers
                 return RedirectToAction(nameof(Index));
             }
             return View(movie_rating);
+=======
+        public async Task<IActionResult> Create([Bind("id,rating,review,movie_id")] Rating rating)
+        {
+            if (ModelState.IsValid)
+            {
+                _context.Add(rating);
+                await _context.SaveChangesAsync();
+                return RedirectToAction(nameof(Index));
+            }
+            return View(rating);
+>>>>>>> c81e6e7945b9b4fb1f209074332a57c85f8d40a5
         }
 
         // GET: Ratings/Edit/5
@@ -86,9 +98,15 @@ namespace Learn_Net_Core_ASP.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
+<<<<<<< HEAD
         public async Task<IActionResult> Edit(int id, [Bind("id,rating,review,movie_id")] Rating movie_rating)
         {
             if (id != movie_rating.id)
+=======
+        public async Task<IActionResult> Edit(int id, [Bind("id,rating,review,movie_id")] Rating rating)
+        {
+            if (id != rating.id)
+>>>>>>> c81e6e7945b9b4fb1f209074332a57c85f8d40a5
             {
                 return NotFound();
             }
@@ -97,12 +115,20 @@ namespace Learn_Net_Core_ASP.Controllers
             {
                 try
                 {
+<<<<<<< HEAD
                     _context.Update(movie_rating);
+=======
+                    _context.Update(rating);
+>>>>>>> c81e6e7945b9b4fb1f209074332a57c85f8d40a5
                     await _context.SaveChangesAsync();
                 }
                 catch (DbUpdateConcurrencyException)
                 {
+<<<<<<< HEAD
                     if (!RatingExists(movie_rating.id))
+=======
+                    if (!RatingExists(rating.id))
+>>>>>>> c81e6e7945b9b4fb1f209074332a57c85f8d40a5
                     {
                         return NotFound();
                     }
@@ -113,7 +139,11 @@ namespace Learn_Net_Core_ASP.Controllers
                 }
                 return RedirectToAction(nameof(Index));
             }
+<<<<<<< HEAD
             return View(movie_rating);
+=======
+            return View(rating);
+>>>>>>> c81e6e7945b9b4fb1f209074332a57c85f8d40a5
         }
 
         // GET: Ratings/Delete/5

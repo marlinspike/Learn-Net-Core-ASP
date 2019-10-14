@@ -1,5 +1,11 @@
+<<<<<<< HEAD
 ﻿
 @model Movie
+=======
+﻿@page
+@model Learn_Net_Core_ASP.Views.Movies.EditModel
+
+>>>>>>> c81e6e7945b9b4fb1f209074332a57c85f8d40a5
 
 <h1>Edit</h1>
 
@@ -7,6 +13,7 @@
 <hr />
 <div class="row">
     <div class="col-md-4">
+<<<<<<< HEAD
         <form asp-action="Edit">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
             <input type="hidden" asp-for="id" />
@@ -34,6 +41,40 @@
                 @Html.DisplayNameFor(model => model.genre)
                 <input asp-for="genre" class="form-control" value="@Model.genre" />
                 <span asp-validation-for="genre" class="text-danger"></span>
+=======
+        <form method="post">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <input type="hidden" asp-for="Movie.id" />
+            <div class="form-group">
+                <label asp-for="Movie.title" class="control-label"></label>
+                <input asp-for="Movie.title" class="form-control" />
+                <span asp-validation-for="Movie.title" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Movie.releaseDate" class="control-label"></label>
+                <input asp-for="Movie.releaseDate" class="form-control" />
+                <span asp-validation-for="Movie.releaseDate" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Movie.releaseYear" class="control-label"></label>
+                <input asp-for="Movie.releaseYear" class="form-control" />
+                <span asp-validation-for="Movie.releaseYear" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Movie.blurb" class="control-label"></label>
+                <input asp-for="Movie.blurb" class="form-control" />
+                <span asp-validation-for="Movie.blurb" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Movie.language" class="control-label"></label>
+                <input asp-for="Movie.language" class="form-control" />
+                <span asp-validation-for="Movie.language" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Movie.genre" class="control-label"></label>
+                <input asp-for="Movie.genre" class="form-control" />
+                <span asp-validation-for="Movie.genre" class="text-danger"></span>
+>>>>>>> c81e6e7945b9b4fb1f209074332a57c85f8d40a5
             </div>
             <div class="form-group">
                 <input type="submit" value="Save" class="btn btn-primary" />
@@ -43,5 +84,14 @@
 </div>
 
 <div>
+<<<<<<< HEAD
     <a asp-action="Index">Back to List</a>
 </div>
+=======
+    <a asp-page="./Index">Back to List</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}
+>>>>>>> c81e6e7945b9b4fb1f209074332a57c85f8d40a5
