@@ -1,12 +1,4 @@
-﻿
-<<<<<<< HEAD
-=======
-
-@using Learn_Net_Core_ASP.Data;
-@using Learn_Net_Core_ASP.Models;
-@using Microsoft.EntityFrameworkCore;
-@addTagHelper *,Microsoft.AspNetCore.Mvc.TagHelpers
->>>>>>> c81e6e7945b9b4fb1f209074332a57c85f8d40a5
+﻿@using Learn_Net_Core_ASP.Models;
 @model Movie
 
 
@@ -28,16 +20,9 @@
         <dd class="col-sm-10">
             @Html.DisplayFor(model => model.rating.FirstOrDefault().rating)
         </dd>
+
         <dt class="col-sm-2">
-<<<<<<< HEAD
-=======
-            @Html.DisplayNameFor(model => model.releaseDate)
-        </dt>
-        <dd class="col-sm-10">
-            @Html.DisplayFor(model => model.releaseDate)
-        </dd>
-        <dt class="col-sm-2">
->>>>>>> c81e6e7945b9b4fb1f209074332a57c85f8d40a5
+
             @Html.DisplayNameFor(model => model.releaseYear)
         </dt>
         <dd class="col-sm-10">
